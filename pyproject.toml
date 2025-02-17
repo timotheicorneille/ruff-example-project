@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "ruff-example-project"
+version = "0.1.0"
+description = "An example Python project using Ruff for linting and formatting."
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "PL", "RUF"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

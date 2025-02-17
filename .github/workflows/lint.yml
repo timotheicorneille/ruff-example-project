@@ -1,0 +1,28 @@
+name: Code Quality Checks
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Linting & Formatting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install ruff pre-commit
+          pre-commit install
+
+      - name: 🔍 Run pre-commit checks
+        run: pre-commit run --all-files
+
+      - name: ❌ Fail if issues are found
+        run: git diff --exit-code || exit 1
